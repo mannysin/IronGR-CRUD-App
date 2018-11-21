@@ -9,8 +9,13 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-const flash        = require("connect-flash");
+const session       = require("express-session");
+const bcrypt        = require("bcryptjs");
+const passport      = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const flash         = require("connect-flash");
 
+require('./config/passport');
 
 mongoose
   .connect('mongodb://localhost/ironGR', {useNewUrlParser: true})
@@ -47,11 +52,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-
-// default value for title local
 app.locals.title = 'IronGR';
 
+app.use(flash());
 
+app.use(session({
+  secret: "so-secret",
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const index = require('./routes/index');
 app.use('/', index);

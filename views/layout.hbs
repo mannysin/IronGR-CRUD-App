@@ -9,6 +9,8 @@
 </head>
 <body>
   <nav>
+    <div class="nav-logo"><img src="/images/logo-ironhack-blue.png" alt="IronGR Logo"></div>
+    <div class = "nav-links">
     {{#if theUser}}
     <a class = "secret" href="/secretpage">.</a>
     {{/if}}
@@ -21,10 +23,11 @@
 
 
     {{#if theUser}}
-    <a href="/logout"> Log Out</a>
+    <a href="/logout">Log Out</a>
     {{else}}
     <a href="/login">Log In</a>
     {{/if}}
+    </div>
   </nav>
   
   

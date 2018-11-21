@@ -2,43 +2,55 @@ const express    = require('express');
 const router     = express.Router();
 const User       = require('../models/User');
 const bcrypt     = require('bcryptjs');
-const bcryptSalt = 10;
 
 const passport   = require("passport");
-
+const flash      = require("connect-flash");
+const session    = require("express-session");
+const sessions   = require("sessions");
 
 
 router.get('/signup', (req, res, next) => {
   res.render('users/signup');
+  console.log('Get route working fine')
 });
 
 router.post('/signup', (req, res, next)=> {
   const theUsername = req.body.username;
   const thePassword = req.body.password;
 
-  User.findOne({theUsername})
-    if(theUsername !== null){
-    // req.flash('errorMessage', 'sorry, that username is taken');
-    // this is essentially equal to req.flash.error = 'sorry that username is taken'
-    res.redirect('/signup')
-    }
-      const salt     = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(thePassword, salt);
+  User.findOne({username: theUsername})
+  .then((x)=> {
+    console.log("this is the " + x.username)
+      if(x.username !== null){
+        req.flash('error', "That username is really cool, but it's taken!")
+        res.redirect('/login')
+      } else {
 
+        const salt     = bcrypt.genSaltSync(10);
+        const hashPass = bcrypt.hashSync(thePassword, salt);
+    
     User.create({
       username: theUsername, 
       password: hashPass,
       })
       .then(()=>{
-          res.redirect('/profile');
+        res.redirect('/profile');
       })
       .catch((err)=>{
-          next(err);
+        next(err);
     })  
+
+        
+      }
+    })
+    .catch((err)=> {
+      next(err)
+    })
+
 });
 
 router.get('/login', (req, res, next)=> {
-  res.render('users/login');
+  res.render('users/login', {error: req.flash("error")});
 });
 
 
@@ -56,7 +68,6 @@ router.get('/logout', (req, res, next)=>{
 
 router.get('/profile', (req, res, next)=>{
       res.render('users/profile');
-
 })
 
 module.exports = router;
