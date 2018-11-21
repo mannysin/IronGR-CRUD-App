@@ -9,6 +9,8 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const flash        = require("connect-flash");
+
 
 mongoose
   .connect('mongodb://localhost/ironGR', {useNewUrlParser: true})

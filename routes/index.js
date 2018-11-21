@@ -6,4 +6,8 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+router.get('/secretpage', (req, res, next) => {
+  res.render('secretpage');
+});
+
 module.exports = router;

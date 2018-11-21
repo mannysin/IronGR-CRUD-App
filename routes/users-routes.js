@@ -16,37 +16,26 @@ router.post('/signup', (req, res, next)=> {
   const theUsername = req.body.username;
   const thePassword = req.body.password;
 
-  if(theUsername === "" || thePassword === ""){
-    res.redirect('/');
-    return;
-  }
-
-  User.findOne({username: theUsername })
-    if(username !== null){
-    req.flash('errorMessage', 'sorry, that username is taken');
+  User.findOne({theUsername})
+    if(theUsername !== null){
+    // req.flash('errorMessage', 'sorry, that username is taken');
     // this is essentially equal to req.flash.error = 'sorry that username is taken'
     res.redirect('/signup')
-      }
-        
+    }
+      const salt     = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(thePassword, salt);
 
-
-            const salt     = bcrypt.genSaltSync(bcryptSalt);
-            const hashPass = bcrypt.hashSync(thePassword, salt);
-
-
-            User.create({
-              username: theUsername, 
-              password: hashPass,
-            })
-            .then(()=>{
-                res.redirect('/profile');
-            })
-            .catch((err)=>{
-                next(err);
-    })
-
-    
-  });
+    User.create({
+      username: theUsername, 
+      password: hashPass,
+      })
+      .then(()=>{
+          res.redirect('/profile');
+      })
+      .catch((err)=>{
+          next(err);
+    })  
+});
 
 router.get('/login', (req, res, next)=> {
   res.render('users/login');
