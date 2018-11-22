@@ -10,20 +10,20 @@ const sessions   = require("sessions");
 
 
 router.get('/signup', (req, res, next) => {
-  res.render('users/signup');
+  res.render('users/signup', {error: req.flash("error")});
   console.log('Get route working fine')
 });
 
 router.post('/signup', (req, res, next)=> {
   const theUsername = req.body.username;
   const thePassword = req.body.password;
-
   User.findOne({username: theUsername})
-  .then((x)=> {
-    console.log("this is the " + x.username)
-      if(x.username !== null){
+  .then((theUser)=> {
+    
+    console.log("this is also loading" + theUsername)
+      if(theUser !== null){
         req.flash('error', "That username is really cool, but it's taken!")
-        res.redirect('/login')
+        res.redirect('/signup')
       } else {
 
         const salt     = bcrypt.genSaltSync(10);
@@ -33,9 +33,9 @@ router.post('/signup', (req, res, next)=> {
       username: theUsername, 
       password: hashPass,
       })
-      .then(()=>{
-        res.redirect('/profile');
-      })
+    .then(()=>{
+      res.redirect('/profile');
+    })
       .catch((err)=>{
         next(err);
     })  
@@ -43,9 +43,9 @@ router.post('/signup', (req, res, next)=> {
         
       }
     })
-    .catch((err)=> {
-      next(err)
-    })
+  .catch((err)=> {
+    next(err)
+  })
 
 });
 

@@ -1,12 +1,18 @@
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 1em  "Helvetica", Arial, sans-serif; }
 
 nav {
   display: flex;
   flex-direction: row;
-  padding: 1vw; }
+  justify-content: space-between;
+  padding: 1vw;
+  border-bottom: 5px solid black; }
+
+nav img {
+  width: 2.5vw;
+  height: 6vh; }
 
 nav a {
   color: #00B7FF;
@@ -14,5 +20,14 @@ nav a {
 
 .nav-logo {
   justify-content: flex-start; }
+
+.nav-links {
+  padding: 0 4vw; }
+
+.mainPage {
+  padding: 1vw; }
+
+.secret {
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

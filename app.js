@@ -10,12 +10,13 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session       = require("express-session");
+const sessions      = require("sessions");
 const bcrypt        = require("bcryptjs");
 const passport      = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const flash         = require("connect-flash");
 
-require('./config/passport');
+const config        = require('./config/passport');
 
 mongoose
   .connect('mongodb://localhost/ironGR', {useNewUrlParser: true})
@@ -64,6 +65,14 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+app.use((req, res, next)=>{ 
+if(req.user){
+  res.locals.theUser = req.user;
+}
+next();
+})
 
 const index = require('./routes/index');
 app.use('/', index);
