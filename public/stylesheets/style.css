@@ -7,27 +7,28 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 3.5vh;
   padding: 1vw;
-  border-bottom: 5px solid black; }
+  background-color: lightblue;
+  border-bottom: 5px solid #35a9f7; }
 
 nav img {
-  width: 2.5vw;
-  height: 6vh; }
+  width: 2.3vw;
+  height: 5vh; }
 
 nav a {
-  color: #00B7FF;
-  justify-content: flex-end; }
-
-.nav-logo {
-  justify-content: flex-start; }
+  color: white; }
 
 .nav-links {
-  padding: 0 4vw; }
+  padding: 0 3vw; }
 
 .mainPage {
-  padding: 1vw; }
+  padding: 4vw; }
 
 .secret {
-  color: white; }
+  color: lightblue; }
 
 /*# sourceMappingURL=style.css.map */

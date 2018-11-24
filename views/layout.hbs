@@ -9,24 +9,27 @@
 </head>
 <body>
   <nav>
-    <div class="nav-logo"><img src="/images/logo-ironhack-blue.png" alt="IronGR Logo"></div>
+    <div class="nav-logo">
+      <a href="/">
+        <img src="/images/logo-ironhack-blue.png" alt="IronGR Logo">
+      </a>
+    </div>
     <div class = "nav-links">
     {{#if theUser.username}}
-    <a class = "secret" href="/secretpage">.</a>
-    {{/if}}
-    <a href="/">Home</a>
-
-    {{#if theUser}}
-    {{else}}
-    <a href="/signup">Signup</a>
+      <a class = "secret" href="/secretpage">.</a>
     {{/if}}
 
-
     {{#if theUser}}
-    <a href="/profile">My Account</a>
-    <a href="/logout">Log Out</a>
+      <a href="/">Home</a>
+      <a href="/">Games</a>
+      <a href="/profile">My Account</a>
+      <a href="/">About Us</a>
+      <a href="/logout">Log Out</a>
     {{else}}
-    <a href="/login">Log In</a>
+      <a href="/signup">Signup</a> <span>or</span>  
+      <a href="/login">Log In</a>
+      &nbsp; &nbsp; &nbsp;
+      <a href="/">About Us</a>
     {{/if}}
     </div>
   </nav>

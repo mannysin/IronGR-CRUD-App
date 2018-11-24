@@ -10,7 +10,6 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session       = require("express-session");
-const sessions      = require("sessions");
 const bcrypt        = require("bcryptjs");
 const passport      = require("passport");
 const LocalStrategy = require("passport-local").Strategy;

@@ -29,10 +29,3 @@ passport.use(new LocalStrategy((username, password, next) => {
     return next(null, user);
   });
 }));
-
-// app.use((res, req, next)=>{ 
-//   if(req.user){
-//     res.locals.user = req.user;
-//   }
-//   next();
-//   })
