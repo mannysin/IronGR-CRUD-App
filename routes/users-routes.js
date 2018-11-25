@@ -30,7 +30,7 @@ router.post('/signup', (req, res, next)=> {
         firstName: "I haven't edited",
         lastName: "my profile yet",
         avatar: "http://worldartsme.com/images/blue-lightning-bolt-clipart-1.jpg",
-        bio: "I am technically a sheep to whoever made this because I haven't edited my information",
+        bio: "I am technically a sheep to whoever made this because I haven't edited my information.",
         })
       .then(()=>{
         res.redirect('/profile')
@@ -64,6 +64,10 @@ router.post("/login", passport.authenticate("local", {
 
 router.get('/profile', (req, res, next)=>{
   res.render('users/profile');
+})
+
+router.get('/edit-profile', (req, res, next)=>{
+  res.render('users/edit-profile');
 })
 
 router.get('/logout', (req, res, next)=>{
