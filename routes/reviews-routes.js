@@ -43,6 +43,26 @@ router.get('/reviews/:ID', (req, res, next)=>{
     })
   });
 
+router.get('/reviews/:ID/edit', (req, res, next)=>{
+    Review.findById(req.params.ID)
+    .then((theReview)=>{
+        res.render('reviews/edit', {theReview: theReview})    
+    })
+    .catch((err)=>{
+        next(err);
+    })
+});
+
+router.post('/reviews/:ID', (req, res, next)=>{
+    Review.findByIdAndUpdate(req.params.ID, req.body)
+    .then(()=>{
+        res.redirect('/reviews/'+req.params.ID);
+    })
+    .catch((err)=>{
+        next(err);
+    })
+});
+
 
 
 module.exports = router;
