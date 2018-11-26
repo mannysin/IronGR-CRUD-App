@@ -1,8 +1,10 @@
 const express    = require('express');
 const router     = express.Router();
-const User       = require('../models/User');
 const bcrypt     = require('bcryptjs');
 const passport   = require("passport");
+const User       = require('../models/User');
+const Review     = require('../models/Review');
+const Comment    = require('../models/Comment');
 
 router.get('/signup', (req, res, next) => {
   res.render('users/signup', {error: req.flash("error")});
@@ -33,7 +35,7 @@ router.post('/signup', (req, res, next)=> {
         bio: "I am technically a sheep to whoever made this because I haven't edited my information.",
         })
       .then(()=>{
-        res.redirect('/profile')
+        res.redirect('/reviews')
         //  passport.authenticate("local", {
         //   successRedirect: "/profile",
         //   failureRedirect: "/login",
@@ -72,7 +74,7 @@ router.get('/profile', (req, res, next)=>{
 // })
 // User.findById(req.params.theID)
 
-router.get('/edit-profile', (req, res, next)=>{
+router.get('/edit-profile/', (req, res, next)=>{
   res.render('users/edit-profile');
 })
 

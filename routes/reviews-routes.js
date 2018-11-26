@@ -24,8 +24,11 @@ router.get('/reviews/new', (req, res, next) => {
 });
 
 router.post('/review/create', (req, res, next)=>{
-      Review.create(req.body)
-      .then(()=>{
+    const newReview = req.body;
+    newReview.author = req.user._id;
+      Review.create(newReview).populate('user')
+      .then((review)=>{
+          User.findByIdAndUpdate(req.user._id, {$push: {reviews: review._id}})
           res.redirect('/reviews');
       })
       .catch((err)=>{
@@ -34,7 +37,7 @@ router.post('/review/create', (req, res, next)=>{
 });
 
 router.get('/reviews/:ID', (req, res, next)=>{
-    Review.findById(req.params.ID)
+    Review.findById(req.params.ID).populate('author')
     .then((theReview)=>{
         res.render('reviews/details', theReview)
     })

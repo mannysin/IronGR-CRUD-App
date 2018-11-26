@@ -8,8 +8,8 @@ const userSchema = new Schema({
   lastName: String,
   avatar: String,
   bio: String,
-  comments: [String],
-  reviews: {type: Schema.Types.ObjectId, ref: 'Review'},
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment', default: []}],
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review', default: ['Make a review!']}],
   myGames: [String], 
 }, {
   timestamps: true
