@@ -1,0 +1,29 @@
+<h2>
+  Review Details - 
+</h2>
+<h1>
+  Name: {{this.game}}
+</h1>
+
+<h1>
+  Rating: {{this.rating}}
+</h1>
+
+<h1>
+  Author: {{this.author}}
+</h1>
+
+
+{{#if theUser}}
+<a href="/reviews/{{_id}}/edit">Edit This Review</a>
+<br>
+<br>
+<form action="/reviews/{{_id}}/delete" method="POST">
+    <button>Delete This Review</button>
+</form>
+{{else}}
+<p>Are you the author of this review?</p>
+  <a href="../login">Log in</a><span> to edit/delete this review!</span>
+{{/if}}
+
+

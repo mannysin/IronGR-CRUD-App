@@ -11,6 +11,24 @@
   <label for="">Author:</label>
   <input type="text" name="username" value="{{theUser.username}}">
 
+
+<label for="">Author:</label>
+  
+  <select name="username">
+
+   {{#each allTheReviews}}
+    <option value="{{this._id}}">{{this.game}}</option>
+   {{/each}}
+  </select>
+
+  {{!-- <select name="author">
+    
+  {{#each allTheReviews}}
+    <option value="{{this._id}}">{{this.name}}</option>
+   {{/each}}
+
+  </select> --}}
+
   <button type="submit">ADD</button>
 
 

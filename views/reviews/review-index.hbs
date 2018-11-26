@@ -1,4 +1,4 @@
-<h1>hi</h1>
+<h1>Our curated reviews can be found below:</h1>
 
 {{#each reviews}}
 <div>
@@ -10,10 +10,11 @@
 {{/each}}
 <br>
 <br>
-
 {{#if theUser}}
+<p>Is there a game you would like to review?</p>
   <a href="reviews/new">Add a new review!</a>
 {{else}}
+<p>Is there a game you would like to review?</p>
     <a href="/signup">Signup to review a game</a> <span>or</span>  
-    <a href="/login">Log In to review now!</a>
+    <a href="/login">Log In now to review!</a>
 {{/if}}

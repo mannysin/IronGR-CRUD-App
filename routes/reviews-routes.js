@@ -33,6 +33,15 @@ router.post('/review/create', (req, res, next)=>{
       })
 });
 
+router.get('/reviews/:ID', (req, res, next)=>{
+    Review.findById(req.params.ID)
+    .then((theReview)=>{
+        res.render('reviews/details', theReview)
+    })
+    .catch((err)=>{
+        next(err);
+    })
+  });
 
 
 
