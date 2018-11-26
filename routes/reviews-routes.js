@@ -26,10 +26,16 @@ router.get('/reviews/new', (req, res, next) => {
 router.post('/review/create', (req, res, next)=>{
     const newReview = req.body;
     newReview.author = req.user._id;
-      Review.create(newReview).populate('user')
+      Review.create(newReview)
       .then((review)=>{
           User.findByIdAndUpdate(req.user._id, {$push: {reviews: review._id}})
-          res.redirect('/reviews');
+          .then(updatedUser => {
+              console.log("the updated user info with review added to user reviews --------- ", updatedUser);
+              res.redirect('/reviews');
+          })
+          .catch(err => {
+              next(err);
+          })
       })
       .catch((err)=>{
           next(err)

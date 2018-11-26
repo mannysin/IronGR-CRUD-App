@@ -34,14 +34,20 @@ router.post('/signup', (req, res, next)=> {
         avatar: "http://worldartsme.com/images/blue-lightning-bolt-clipart-1.jpg",
         bio: "I am technically a sheep to whoever made this because I haven't edited my information.",
         })
-      .then(()=>{
-        res.redirect('/reviews')
+      .then((theUser)=>{
+        // res.redirect('/reviews')
         //  passport.authenticate("local", {
         //   successRedirect: "/profile",
         //   failureRedirect: "/login",
         //   failureFlash: true,
         //   passReqToCallback: true
         // }));
+        req.login(theUser, (err) => {
+          req.flash('error', 'something went wrong with auto login, please log in manually')
+          res.redirect('/login')
+          return;
+        })
+        res.redirect('/profile');
       })
       .catch((err)=>{
           next(err);
@@ -65,7 +71,13 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 router.get('/profile', (req, res, next)=>{
-  res.render('users/profile');
+  User.findById(req.user._id).populate('reviews')
+  .then(userFromDB => {
+    res.render('users/profile', {theUser: userFromDB});
+  })
+  .catch(err => {
+    next(err);
+  })
 })
 
 // router.get('/:theID', (req, res, next)=>{

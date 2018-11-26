@@ -16,7 +16,10 @@
   </div>
   <div>
     Your reviews:
-    {{theUser.reviews}}
+    {{#each theUser.reviews}}
+      <h4>{{this.game}}: {{this.rating}}</h4>
+    {{/each}}
+    {{!-- {{theUser.reviews}} --}}
 
   </div>
   <div>
