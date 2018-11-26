@@ -3,13 +3,13 @@
 <form action="/review/create" method="POST">
 
   <label for="">Game:</label>
-  <input type="text" name="game">
+  <input type="text" name="game" required>
 
   <label for="">Rating:</label>
-  <input type="text" name="rating">
+  <input type="number" name="rating" min="0" max ="10" required>
 
   <label for="">Author:</label>
-  <input type="text" name="username">
+  <input type="text" name="username" value="{{theUser.username}}">
 
   <button type="submit">ADD</button>
 
