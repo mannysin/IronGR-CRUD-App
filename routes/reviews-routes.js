@@ -63,6 +63,14 @@ router.post('/reviews/:ID', (req, res, next)=>{
     })
 });
 
-
+router.post('/reviews/:ID/delete', (req, res, next)=>{
+    Review.findByIdAndRemove(req.params.ID)
+    .then(()=>{
+        res.redirect('/reviews')
+    })
+    .catch((err)=>{
+        next(err);
+    })
+  });
 
 module.exports = router;
