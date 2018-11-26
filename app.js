@@ -79,5 +79,8 @@ app.use('/', index);
 const userRoutes = require('./routes/users-routes')
 app.use('/', userRoutes);
 
+const reviewRoutes = require('./routes/reviews-routes')
+app.use('/', reviewRoutes);
+
 
 module.exports = app;
