@@ -1,1 +1,13 @@
 <h1>hi</h1>
+
+{{#each reviews}}
+<div>
+
+<a href="reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a>
+
+</div>
+
+{{/each}}
+<br>
+<br>
+<a href="reviews/new">Add a new review!</a>

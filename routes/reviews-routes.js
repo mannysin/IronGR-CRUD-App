@@ -4,9 +4,36 @@ const Review     = require('../models/Review')
 const User       = require('../models/User');
 
 router.get('/reviews', (req, res, next) => {
-  res.render('reviews/review-index', {error: req.flash("error")});
-  console.log('Review get route working fine')
+  Review.find()
+    .then((allTheReviews)=>{
+      res.render('reviews/review-index', {reviews: allTheReviews})
+  })
+  .catch((err)=>{
+      next(err);
+  })
 });
+
+router.get('/reviews/new', (req, res, next) => {
+  Review.find()
+    .then((allTheReviews)=>{
+      res.render('reviews/new-review', {allTheReviews})
+  })
+  .catch((err)=>{
+      next(err);
+  })
+});
+
+router.post('/review/create', (req, res, next)=>{
+      Review.create(req.body)
+      .then(()=>{
+          res.redirect('/reviews');
+      })
+      .catch((err)=>{
+          next(err)
+      })
+});
+
+
 
 
 module.exports = router;
