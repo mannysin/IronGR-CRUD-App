@@ -66,9 +66,25 @@ router.get('/profile', (req, res, next)=>{
   res.render('users/profile');
 })
 
+// router.get('/:theID', (req, res, next)=>{
+//   User.findById(req.params.theID)
+//   res.render('users/profile');
+// })
+// User.findById(req.params.theID)
+
 router.get('/edit-profile', (req, res, next)=>{
   res.render('users/edit-profile');
 })
+
+router.post('/:id/update', (req, res, next)=>{
+  User.findByIdAndUpdate(req.params.id, req.body)
+  .then(()=>{
+      res.redirect('/user/'+req.params.id);
+  })
+  .catch((err)=>{
+      next(err)
+  })
+});
 
 router.get('/logout', (req, res, next)=>{
   req.logout();
