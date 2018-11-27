@@ -17,9 +17,16 @@
   <div>
     Your reviews:
     {{#each theUser.reviews}}
-      <h4>{{this.game}}: {{this.rating}}</h4>
+    <ul>
+      <li>
+
+      <h4><a href="reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a></h4>
+
+      </li>
+
+
+    </ul>
     {{/each}}
-    {{!-- {{theUser.reviews}} --}}
 
   </div>
   <div>

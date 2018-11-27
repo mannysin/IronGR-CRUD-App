@@ -1,7 +1,8 @@
 const express    = require('express');
 const router     = express.Router();
-const Review     = require('../models/Review')
+const Review     = require('../models/Review');
 const User       = require('../models/User');
+const Comment    = require('../models/Comment');
 
 router.get('/reviews', (req, res, next) => {
   Review.find()

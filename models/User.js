@@ -8,7 +8,7 @@ const userSchema = new Schema({
   lastName: String,
   avatar: String,
   bio: String,
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment', default: []}],
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   myGames: [String], 
 }, {
