@@ -14,21 +14,21 @@
   {{theUser.bio}}
 
   </div>
+
   <div>
     Your reviews:
     {{#each theUser.reviews}}
     <ul>
       <li>
-
-      <h4><a href="reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a></h4>
-
+      <h4>
+        <a href="reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a>
+      </h4>
       </li>
-
-
     </ul>
     {{/each}}
 
   </div>
+  
   <div>
 
     <h4>Need to update your account? <a href="/edit-profile/">Click here</a></h4>
