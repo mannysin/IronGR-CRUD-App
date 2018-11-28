@@ -4,10 +4,10 @@ const Review     = require('../models/Review');
 const Comment    = require('../models/Comment');
 const User       = require('../models/User');
 
-router.get('/comments', (req, res, next) => {
-  Comment.find()
-  .then(()=>{
-      res.render('comments/new-comment')
+router.get('/:id/comments/new', (req, res, next) => {
+  Review.findById(req.params.id)
+  .then((review)=>{
+      res.render('comments/new-comment', {review})
   })
   .catch((err)=>{
       next(err);
