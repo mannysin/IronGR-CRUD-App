@@ -10,7 +10,7 @@ const userSchema = new Schema({
   bio: String,
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
-  myGames: [String], 
+  myGames: [{type: Schema.Types.ObjectId, ref: 'Game'}], 
 }, {
   timestamps: true
 });
