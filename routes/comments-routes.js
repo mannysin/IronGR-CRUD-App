@@ -14,21 +14,25 @@ router.get('/:id/comments/new', (req, res, next) => {
   })
 });
 
-router.post('/comments/create', (req, res, next)=>{
+router.post('/:id/comments/create', (req, res, next)=>{
   if(!req.user) {
       req.flash("error", "You must be logged in to post! Not a member? Sign up!");
       res.redirect("/login");
   }
   const newComment = req.body;
   newComment.author = req.user._id;
+  newComment.review = req.params.id;
     Comment.create(newComment)
     .then((comment)=>{
-        User.findByIdAndUpdate(req.user._id, {$push: {comments: comment._id}})
-        .then(updatedUser => {
-            console.log("the updated user info with review added to user reviews --------- ", updatedUser);
-            res.redirect('/reviews');
+      User.findByIdAndUpdate(req.user._id, {$push: {comments: comment._id}})
+      .then(comment => {
+        Review.findByIdAndUpdate(req.params.id, {$push: {comments: comment._id}})
+        .then(comment => {
+          res.redirect('/reviews');
         })
-    })
+
+      })
+  })
     .catch((err)=>{
         next(err)
     })

@@ -45,7 +45,7 @@ router.post('/review/create', (req, res, next)=>{
 });
 
 router.get('/reviews/:ID', (req, res, next)=>{
-    Review.findById(req.params.ID).populate('author')
+    Review.findById(req.params.ID).populate('author').populate('comments')
     .then((theReview)=>{
         res.render('reviews/details', theReview)
     })
@@ -55,7 +55,6 @@ router.get('/reviews/:ID', (req, res, next)=>{
   });
 
 router.get('/reviews/:ID/edit', (req, res, next)=>{
-    
     Review.findById(req.params.ID)
     .then((theReview)=>{
         res.render('reviews/edit', {theReview: theReview})    

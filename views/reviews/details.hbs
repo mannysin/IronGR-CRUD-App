@@ -14,7 +14,16 @@
 </h1>
 
 <h1>
-  Comments: {{this.comment.title}}, {{this.comment.comment}}
+  Comments: 
+    {{#each comments}}
+      <ul>
+        <li>
+          <h4>
+            {{this.title}}
+          </h4>
+        </li>
+      </ul>
+    {{/each}}
 </h1>
 
 
@@ -22,8 +31,15 @@
 <p>Want to say something about this review?</p>
   <a href="/{{_id}}/comments/new">Comment on this Review</a>
 
- 
-<form action="/{{_id}}/comments/new" method="POST">
+
+<form action="/{{_id}}/comments/create" method="POST">
+
+<label for="">Title:</label>
+<input type="text" name="title" required>
+
+<label>Comment: </label>
+<textarea name="comment" id="" cols="30" rows="10" required></textarea>
+
   <button>Comment on This Review</button>
 </form>
 

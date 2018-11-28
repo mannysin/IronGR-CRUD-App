@@ -1,6 +1,6 @@
 <h1>Add a new comment below for {{review.game}}</h1>
 
-<form action="/comments/create" method="POST">
+<form action="/{{review._id}}/comments/create" method="POST">
 
 <label for="">Title:</label>
 <input type="text" name="title" required>
