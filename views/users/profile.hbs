@@ -28,6 +28,27 @@
     {{/each}}
 
   </div>
+
+  <div>
+    Your comments:
+     {{#each theUser.comments}}
+    <ul>
+      <li>
+      <h4>
+        <a href="reviews/{{this._id}}">{{this.title}}</a>
+      </h4>
+      </li>
+    </ul>
+    {{/each}}
+    
+  </div>
+
+  <div>
+    Your games:
+    
+  </div>
+
+
   
   <div>
 

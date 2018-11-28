@@ -82,6 +82,9 @@ app.use('/', userRoutes);
 const reviewRoutes = require('./routes/reviews-routes')
 app.use('/', reviewRoutes);
 
+const commentRoutes = require('./routes/comments-routes')
+app.use('/', commentRoutes);
+
 const gameRoutes = require('./routes/games-routes')
 app.use('/', gameRoutes);
 

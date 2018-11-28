@@ -1,0 +1,13 @@
+<h1>Add a new comment below for {{review.game}}</h1>
+
+<form action="/comments/create" method="POST">
+
+<label for="">Title:</label>
+<input type="text" name="title" required>
+
+<label>Comment: </label>
+<textarea name="comment" id="" cols="30" rows="10" required></textarea>
+
+<button>Add Comment</button>
+
+</form>

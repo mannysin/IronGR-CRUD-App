@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const commentSchema = new Schema({
   author: {type: Schema.Types.ObjectId, ref: 'User'},
   review: {type: Schema.Types.ObjectId, ref: 'Review'},
+  title: String,
   comment:  String,
 }, {
   timestamps: true

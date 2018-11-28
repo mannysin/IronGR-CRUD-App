@@ -35,13 +35,6 @@ router.post('/signup', (req, res, next)=> {
         bio: "I am technically a sheep to whoever made this because I haven't edited my information.",
         })
       .then((theUser)=>{
-        // res.redirect('/reviews')
-        //  passport.authenticate("local", {
-        //   successRedirect: "/profile",
-        //   failureRedirect: "/login",
-        //   failureFlash: true,
-        //   passReqToCallback: true
-        // }));
         req.login(theUser, (err) => {
           req.flash('error', 'something went wrong with auto login, please log in manually')
           res.redirect('/login')
@@ -71,7 +64,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 router.get('/profile', (req, res, next)=>{
-  User.findById(req.user._id).populate('reviews')
+  User.findById(req.user._id).populate('reviews').populate('comments')
   .then(userFromDB => {
     res.render('users/profile', {theUser: userFromDB});
   })

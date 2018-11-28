@@ -8,6 +8,7 @@ const userSchema = new Schema({
   lastName: String,
   avatar: String,
   bio: String,
+  confirmed: {type: Boolean, default: false},
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   myGames: [{type: Schema.Types.ObjectId, ref: 'Game'}], 

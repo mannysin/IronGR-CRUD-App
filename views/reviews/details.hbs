@@ -13,8 +13,22 @@
   Author: {{this.author.username}}
 </h1>
 
+<h1>
+  Comments: {{this.comment.title}}, {{this.comment.comment}}
+</h1>
+
 
 {{#if theUser}}
+<p>Want to say something about this review?</p>
+  <a href="/comments">Comment on this Review</a>
+
+ 
+<form action="/{{_id}}/comments/new" method="POST">
+  <button>Comment on This Review</button>
+</form>
+
+
+
 <a href="/reviews/{{_id}}/edit">Edit This Review</a>
 <br>
 <br>
