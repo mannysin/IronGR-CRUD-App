@@ -1,17 +1,19 @@
 <h1>
   Here are the stats on the comment chosen:
 </h1>
+
 <h2>
-  Name: {{this.title}}
+  Game: {{this.review.game}}
 </h2>
 
 <h2>
-  Rating: {{this.comment}}
+  Title: {{this.title}}
 </h2>
 
 <h2>
-  Created by: {{this.author.username}}
+  Comment: {{this.comment}}
 </h2>
+
 
 
 
@@ -19,5 +21,5 @@
 
 
 <form action="/comments/{{_id}}/delete" method="POST">
-  <button>Delete This Review</button>
+  <button>Delete This Comment</button>
 </form>
