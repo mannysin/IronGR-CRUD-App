@@ -5,7 +5,7 @@ const Comment    = require('../models/Comment');
 const User       = require('../models/User');
 
 router.get('/:id/comments/new', (req, res, next) => {
-  Review.findById(req.params.id)
+  Review.findById(req.params.id).populate('author')
   .then((review)=>{
       res.render('comments/new-comment', {review})
   })
@@ -31,24 +31,36 @@ router.post('/:id/comments/create', (req, res, next)=>{
           res.redirect('/reviews');
         })
       })
-            .catch((err)=>{
-              next(err)
-            })
+      .catch((err)=>{
+        next(err)
+      })
       .catch((err) =>{
         next (err)
       })
-  })
+    })
     .catch((err)=>{
         next(err)
     })
 });
 
-// router.get("/{{_id}}/comments/new", (req, res, next)=>{
-//   Comment.find().populate('review')
-//   .then((comment)=>{
-//     res.render("comments/comment-index", {comment});
-//   })
-// })
+router.get('/comments/:ID', (req, res, next)=>{
+  Comment.findById(req.params.ID).populate('author').populate('review')
+  .then((theComment)=>{
+      res.render('comments/details', theComment)
+  })
+  .catch((err)=>{
+      next(err);
+  })
+});
 
+router.post('/comments/:ID/delete', (req, res, next)=>{
+  Comment.findByIdAndRemove(req.params.ID)
+  .then(()=>{
+      res.redirect('/profile')
+  })
+  .catch((err)=>{
+      next(err);
+  })
+});
 
 module.exports = router;

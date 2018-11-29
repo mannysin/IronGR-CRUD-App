@@ -1,31 +1,29 @@
+<h1>
+  Here are the stats on the review chosen:
+</h1>
 <h2>
-  Here are the stats on the game chosen:
-</h2>
-<h1>
   Name: {{this.game}}
-</h1>
+</h2>
 
-<h1>
+<h2>
   Rating: {{this.rating}}
-</h1>
+</h2>
 
-<h1>
-  Author: {{this.author.username}}
-</h1>
+<h2>
+  Created by: {{this.author.username}}
+</h2>
 
-<h1>
+<h2>
   Comments: 
+</h2>
+
     {{#each comments}}
-      <ul>
-        <li>
-          <h4>
-            {{this.title}}: <br>
-            {{this.comment}}
-          </h4>
-        </li>
-      </ul>
+      <div class ="eachComment">
+            Posted by: {{this.author}} <br>
+            Post Title: {{this.title}} <br>
+            Comment: {{this.comment}}
+      </div>
     {{/each}}
-</h1>
 
 
 {{#if theUser}}
@@ -50,8 +48,9 @@
   <button>Delete This Review</button>
 </form>
 {{else}}
-<p>Are you the author of this review?</p>
-  <a href="../login">Log in</a><span> to edit/delete this review!</span>
+<p>Got something to say about this review?</p>
+  <a href="../signup">Signup</a><span> or</span>
+  <a href="../login">Log in</a><span> to comment now!</span>
 {{/if}}
 
 

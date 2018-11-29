@@ -65,7 +65,7 @@ router.get('/reviews/:ID/edit', (req, res, next)=>{
 });
 
 router.post('/reviews/:ID', (req, res, next)=>{
-    if(!req.user._id) {
+    if(!req.user.ID) {
         req.flash("error", "You must be the author to edit a review.");
         res.redirect("/reviews");
     }

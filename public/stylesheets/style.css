@@ -34,6 +34,13 @@ nav a {
 .eachGame {
   border: 1px solid black;
   border-radius: 5px;
-  margin-bottom: 1.5vh; }
+  margin-bottom: 1.5vh;
+  width: 80vw; }
+
+.eachComment {
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  margin-bottom: 1.5vh;
+  width: 40vw; }
 
 /*# sourceMappingURL=style.css.map */
