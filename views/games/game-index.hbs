@@ -1,18 +1,35 @@
-<h1>games</h1>
+<h1>Browse all of the games below:</h1>
 
+
+
+{{#if showPrev}}
+<a href="/games/{{prev}}">
+
+<button>prev</button>
+
+</a>
+{{/if}}
+{{#if next}}
+<a href="/games/{{next}}">
+
+<button>next</button>
+
+</a>
+{{/if}}
 
 {{#each games}}
-<ul>
+<div class="eachGame">
+  <span>Game: </span><a href="games/{{this._ids}}">{{this.name}}</a>
+  <p></p>
+  <span>Summary: {{this.summary}}</span>
+  
 
-  <li>
-<h4>{{this.name}}</h4>
-<h3>{{this.summary}}</h3>
-<h3>{{this.genres}}</h3>
+</div>
 
-<a href="games/{{this._ids}}">{{this.name}}</a>
 
-  </li>
-</ul>
+
+
+
 
 
 {{/each}}

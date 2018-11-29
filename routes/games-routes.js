@@ -8,14 +8,29 @@ const axios      = require('axios')
 
 const client     = igdb(`${process.env.IGDB_API_KEY}`);
 
-router.get('/games', (req, res, next) => {
+router.get('/games/:offset', (req, res, next) => {
+  let prevOffset = Number(req.params.offset) - 50
+  let nextOffset = Number(req.params.offset) + 50
+  let showPrev = true;
   client.games({
     fields: '*', // Return all fields
     limit: 50, // Limit to 5 results
-    offset: 0 // Index offset for results
+    offset: req.params.offset// Index offset for results
 }).then(response => {
   console.log(response.body);
-  res.render('games/game-index', {games: response.body})
+  if(prevOffset < 0){
+    showPrev = false;
+  }
+  if(nextOffset > 1450) {
+    nextOffset = false;
+  }
+  data = {
+    games: response.body, 
+    prev: prevOffset,
+    next: nextOffset,
+    showPrev: showPrev
+  }
+  res.render('games/game-index', data)
 }).catch(error => {
     next(error);
 });
