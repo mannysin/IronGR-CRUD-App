@@ -2,7 +2,7 @@
 
 <h3>Ready to update your profile? Begin!</h3>
 
-<form action="/users/{{theUser._id}}/update" method="POST">
+<form action="/{{theUser._id}}/update" method="POST">
 
   <label for="">Avatar:</label>
   <input type="text" name="avatar" value="{{theUser.avatar}}">
@@ -20,21 +20,6 @@
   <label for="bioEdit">Bio:</label>
   <textarea id="bioEdit" rows="4" cols = '40' name="bio">{{theUser.bio}}</textarea>
 
-  <br><br>
-
-  <label for="">My Reviews:</label>
-  <input type="text" name="reviews" value="{{theUser.reviews}}">
-
-  {{!-- <select name="review">
-
-   {{#each allTheReviews}}
-    <option value="{{this._id}}">{{this.name}}</option>
-   {{/each}}
-  </select> --}}
-  <br><br>
-
-  <label for="">My Comments:</label>
-  <input type="text" name="comments" value="{{theUser.comments}}">
   <br><br>
 
   <button type="submit">Save Changes</button>

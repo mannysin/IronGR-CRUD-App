@@ -19,9 +19,9 @@
     {{#if theUser}}
       <a class = "secret" href="/secretpage">.</a>
       <a href="/">Home</a>
-      <a href="/games">Games</a>
+      <a href="/games/0">Games</a>
       <a href="/reviews">Reviews</a>
-      <a href="/profile">My Account</a>
+      <a href="/profile/{{theUser._id}}">My Account</a>
       <a href="/">About Us</a>
       <a href="/logout">Log Out</a>
     {{else}}
@@ -39,7 +39,7 @@
   </div>
 
   <footer>
-    
+
   </footer>
 
   <script src="/javascripts/script.js"></script>

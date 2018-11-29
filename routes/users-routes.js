@@ -63,7 +63,7 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-router.get('/profile', (req, res, next)=>{
+router.get('/profile/:id', (req, res, next)=>{
   User.findById(req.user.id).populate('reviews').populate('comments')
   .then(userFromDB => {
     res.render('users/profile', {theUser: userFromDB});
@@ -73,20 +73,20 @@ router.get('/profile', (req, res, next)=>{
   })
 })
 
-// router.get('/:theID', (req, res, next)=>{
-//   User.findById(req.params.theID)
-//   res.render('users/profile');
-// })
-// User.findById(req.params.theID)
-
-router.get('/edit-profile/', (req, res, next)=>{
-  res.render('users/edit-profile');
+router.get('/profile/:id/edit-profile', (req, res, next)=>{
+  User.findById(req.user.id)
+  .then(userFromDB => {
+    res.render('users/edit-profile', {theUser: userFromDB});
+  })
+  .catch(err => {
+    next(err);
+  })
 })
 
 router.post('/:id/update', (req, res, next)=>{
   User.findByIdAndUpdate(req.params.id, req.body)
   .then(()=>{
-      res.redirect('/user/'+req.params.id);
+      res.redirect('/profile/'+req.params.id);
   })
   .catch((err)=>{
       next(err)
