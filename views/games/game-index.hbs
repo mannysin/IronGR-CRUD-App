@@ -26,10 +26,20 @@
 
 </div>
 
-
-
-
-
-
-
 {{/each}}
+
+
+{{#if showPrev}}
+<a href="/games/{{prev}}">
+
+<button>prev</button>
+
+</a>
+{{/if}}
+{{#if next}}
+<a href="/games/{{next}}">
+
+<button>next</button>
+
+</a>
+{{/if}}
