@@ -8,6 +8,11 @@
 
   <label for="">Rating:</label>
   <input type="number" name="rating" min="0" max= "10" value="{{theReview.rating}}">
+  
+  <div>
+  <label for="reviewEdit">Review:</label>
+  <textarea id="reviewEdit" rows="4" cols = '40' name="review">{{theReview.review}}</textarea>
+  </div>
 
   <button type="submit">Save Changes</button>
 
