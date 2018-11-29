@@ -52,11 +52,15 @@ router.get('/reviews/:ID', (req, res, next)=>{
     .catch((err)=>{
         next(err);
     })
-  });
+});
 
 router.get('/reviews/:ID/edit', (req, res, next)=>{
     Review.findById(req.params.ID)
     .then((theReview)=>{
+            if(!req.user._id.equals(theReview.author)) {
+                req.flash("error", "You can only edit your own posts.");
+                res.redirect("/reviews");
+            }
         res.render('reviews/edit', {theReview: theReview})    
     })
     .catch((err)=>{
@@ -79,6 +83,10 @@ router.post('/reviews/:ID', (req, res, next)=>{
 });
 
 router.post('/reviews/:ID/delete', (req, res, next)=>{
+    if(!req.user._id.equals(req.params.ID)) {
+        req.flash("error", "You can only delete your own posts.");
+        res.redirect("/");
+    }
     Review.findByIdAndRemove(req.params.ID)
     .then(()=>{
         res.redirect('/reviews')

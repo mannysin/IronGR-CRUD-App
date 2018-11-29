@@ -20,7 +20,7 @@
 <h2>
   Comments: 
 </h2>
-
+{{#if comments}}
     {{#each comments}}
       <div class ="eachComment">
             Posted by: {{theUser.username}} <br>
@@ -28,6 +28,10 @@
             Comment: {{this.comment}}
       </div>
     {{/each}}
+  {{else if comments}}
+  <h1>No comments, be the first!</h1>
+
+{{/if}}
 
 {{#if theUser}}
 

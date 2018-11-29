@@ -28,7 +28,7 @@ router.post('/:id/comments/create', (req, res, next)=>{
       .then((user)=>{
         User.findByIdAndUpdate(req.user._id, {$push: {comments: comment._id}})
         .then(x => {
-          res.redirect('/reviews');
+          res.redirect(`/reviews/${req.params.id}`);
         })
       })
       .catch((err)=>{
