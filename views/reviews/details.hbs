@@ -44,19 +44,17 @@
 <textarea name="comment" id="" cols="30" rows="10" required></textarea>
 
   <button>Comment on This Review</button>
-</form>
+</form> 
+
+
+ <a href="/reviews/{{_id}}/edit">Edit This Review</a>
+  <br>
+  <br>
+  <form action="/reviews/{{_id}}/delete" method="POST">
+    <button>Delete This Review</button>
+  </form>
 {{else}}
 <p>Got something to say about this review?</p>
   <a href="../signup">Signup</a><span> or</span>
   <a href="../login">Log in</a><span> to comment now!</span>
-{{/if}}
-
-
-{{#if theUser._id}}
-<a href="/reviews/{{_id}}/edit">Edit This Review</a>
-<br>
-<br>
-<form action="/reviews/{{_id}}/delete" method="POST">
-  <button>Delete This Review</button>
-</form>
 {{/if}}
