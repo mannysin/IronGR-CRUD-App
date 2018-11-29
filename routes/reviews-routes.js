@@ -7,7 +7,7 @@ const Comment    = require('../models/Comment');
 router.get('/reviews', (req, res, next) => {
   Review.find()
     .then((allTheReviews)=>{
-      res.render('reviews/review-index', {reviews: allTheReviews})
+      res.render('reviews/review-index', {reviews: allTheReviews, error: req.flash("error")})
   })
   .catch((err)=>{
       next(err);
@@ -83,14 +83,30 @@ router.post('/reviews/:ID', (req, res, next)=>{
 });
 
 router.post('/reviews/:ID/delete', (req, res, next)=>{
-    if(!req.user._id.equals(req.params.ID)) {
-        req.flash("error", "You can only delete your own posts.");
-        res.redirect("/");
-    }
-    Review.findByIdAndRemove(req.params.ID)
-    .then(()=>{
+
+    Review.findById(req.params.ID)
+    .then((theReview)=>{
+            if(!req.user._id.equals(theReview.author)) {
+                req.flash("error", "You can only delete your own posts.");
+                res.redirect("/reviews");
+            }
+    Review.findByIdAndRemove(req.params.ID).populate('author')
+    .then((theReview)=>{
+        if(!req.user._id.equals(theReview.ID)) {
+            console.log("yoyoyoyoyoyoyo" + req.user._id, req.params.ID)
+            req.flash("error", "You can only delete your own posts.");
+            res.redirect("/");
+        }
         res.redirect('/reviews')
     })
+    res.render('reviews/edit', {theReview: theReview})    
+    })
+    .catch((err)=>{
+        next(err);
+    })
+
+
+    
     .catch((err)=>{
         next(err);
     })
