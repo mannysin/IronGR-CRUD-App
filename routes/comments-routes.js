@@ -56,7 +56,7 @@ router.get('/comments/:ID', (req, res, next)=>{
 router.post('/comments/:ID/delete', (req, res, next)=>{
   Comment.findByIdAndRemove(req.params.ID)
   .then(()=>{
-      res.redirect('/profile')
+      res.redirect('/profile/'+req.user._id)
   })
   .catch((err)=>{
       next(err);
