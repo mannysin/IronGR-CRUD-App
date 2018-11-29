@@ -10,6 +10,10 @@
 </h2>
 
 <h2>
+  Review: {{this.review}}
+</h2>
+
+<h2>
   Created by: {{this.author.username}}
 </h2>
 
@@ -19,12 +23,11 @@
 
     {{#each comments}}
       <div class ="eachComment">
-            Posted by: {{this.author}} <br>
+            Posted by: {{theUser.username}} <br>
             Post Title: {{this.title}} <br>
             Comment: {{this.comment}}
       </div>
     {{/each}}
-
 
 {{#if theUser}}
 
