@@ -19,7 +19,7 @@
   <div>
     Your reviews:
     {{#each theUser.reviews}}
-    <div class="eachGame">
+    <div class="eachGame3">
         <a href="/reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a>
     </div>
     {{/each}}
@@ -29,13 +29,9 @@
   <div>
     Your comments:
      {{#each theUser.comments}}
-    <ul>
-      <li>
-      <h4>
+    <div class="eachGame3">
         <a href="/comments/{{this._id}}">{{this.title}}</a>
-      </h4>
-      </li>
-    </ul>
+    </div>
     {{/each}}
     Feel bad about a review? Click on them to delete it!
   </div>
