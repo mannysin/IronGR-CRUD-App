@@ -75,14 +75,9 @@ router.get('/reviews/new2', (req, res, next) => {
   });
 
 router.get('/reviews/:ID', (req, res, next)=>{
-    let canModify = false;
-
-    Review.findById(req.params.ID).populate('author').populate('comments')
+    Review.findById(req.params.ID).populate({path : 'comments', populate: {path: 'author'}})
     .then((theReview)=>{
-        // if(!req.user._id.equals(theReview.author)) {
-        //     canModify = true;
-        //     res.render('reviews/details', {canModify, theReview})
-        // }
+
         res.render('reviews/details', theReview)
     })
     .catch((err)=>{
@@ -110,9 +105,13 @@ router.post('/reviews/:ID', (req, res, next)=>{
         res.redirect("/reviews");
         return
     }
-    Review.findByIdAndUpdate(req.params.ID, req.body)
+    Review.findByIdAndUpdate(req.params.ID, {
+        author: req.user._id,
+        title: req.body.title,
+        comment: req.body.comment
+    })
     .then(()=>{
-        res.redirect('/reviews/'+req.params.ID);
+        res.redirect('/reviews');
     })
     .catch((err)=>{
         next(err);
