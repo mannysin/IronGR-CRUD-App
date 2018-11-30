@@ -1,45 +1,48 @@
 <h1>Browse all of the games below:</h1>
 
 
+<div class="offSetBtns">
 
-{{#if showPrev}}
-<a href="/games/{{prev}}">
+  {{#if showPrev}}
+  <a href="/games/{{prev}}">
 
-<button>prev</button>
+  <div>
+  <button type="button" class="btn btn-info">Prev</button>
+  &nbsp;&nbsp;&nbsp;
+  </div>
 
-</a>
-{{/if}}
-{{#if next}}
-<a href="/games/{{next}}">
+  </a>
+  {{/if}}
+  {{#if next}}
+  <a href="/games/{{next}}">
 
-<button>next</button>
+  <button type="button" class="btn btn-info">Next</button>
 
-</a>
-{{/if}}
+  </a>
+  {{/if}}
+</div>
 
 {{#each games}}
 <div class="eachGame">
   <span>Game: </span><a href="/games/details/{{this.id}}">{{this.name}}</a>
   <p></p>
   <span>Summary: {{this.summary}}</span>
-  
-
 </div>
-
 {{/each}}
 
-
+<div class="offSetBtns">
 {{#if showPrev}}
 <a href="/games/{{prev}}">
 
-<button>prev</button>
+<button type="button" class="btn btn-info">Prev</button>
 
 </a>
 {{/if}}
 {{#if next}}
 <a href="/games/{{next}}">
 
-<button>next</button>
+<button type="button" class="btn btn-info">Next</button>
 
 </a>
 {{/if}}
+</div>

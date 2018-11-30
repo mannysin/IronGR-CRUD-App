@@ -76,8 +76,9 @@ router.get('/reviews/:ID/edit', (req, res, next)=>{
 
 router.post('/reviews/:ID', (req, res, next)=>{
     if(!req.user.ID) {
-        req.flash("error", "You must be the author to edit a review.");
+        req.flash("error", "You must be the author to edit a review!");
         res.redirect("/reviews");
+        return
     }
     Review.findByIdAndUpdate(req.params.ID, req.body)
     .then(()=>{
@@ -92,7 +93,7 @@ router.post('/reviews/:ID/delete', (req, res, next)=>{
     Review.findById(req.params.ID).populate('author')
     .then((theReview)=>{
         if(!req.user._id.equals(theReview.author)) {
-            req.flash("error", "You can only delete your own posts.");
+            req.flash("error", "You can only delete your own posts!");
             res.redirect("/reviews");
             return
         }

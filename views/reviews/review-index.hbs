@@ -1,9 +1,13 @@
+<div class="mainReview">
 <h1>Our curated user reviews can be found below:</h1>
 
 {{#each reviews}}
-<div>
-
-<a href="/reviews/{{this._id}}">{{this.game}}</a>
+<div class="eachGame">
+<p>
+<img class="img-fluid" src="{{this.gameCover}}" alt="No Game Cover Provided">
+</p>
+  
+<span>Name:</span><a href="/reviews/{{this._id}}">{{this.game}}</a>
 <br>
 <span>Rating:{{this.rating}}</span> 
 
@@ -20,5 +24,7 @@
   <a href="../signup">Signup</a><span> or</span>
   <a href="../login">Log in</a><span> to review a game now!</span>
 {{/if}}
+
+</div>
 
 
