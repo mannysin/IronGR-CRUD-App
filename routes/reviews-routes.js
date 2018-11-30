@@ -75,7 +75,7 @@ router.get('/reviews/new2', (req, res, next) => {
   });
 
 router.get('/reviews/:ID', (req, res, next)=>{
-    Review.findById(req.params.ID).populate({path : 'comments', populate: {path: 'author'}})
+    Review.findById(req.params.ID).populate('author').populate({path : 'comments', populate: {path: 'author'}})
     .then((theReview)=>{
 
         res.render('reviews/details', theReview)
