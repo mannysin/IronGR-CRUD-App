@@ -41,6 +41,14 @@ body {
   align-items: center;
 }
 
+.youtubeVideo {
+  background-color: gray;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-bottom: 3vh;
+}
+
 .caroBorder {
   border-top: 10px solid lightblue;
   border-bottom: 10px solid lightblue;
