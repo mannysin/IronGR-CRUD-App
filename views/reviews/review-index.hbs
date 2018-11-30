@@ -4,10 +4,11 @@
 {{#each reviews}}
 <div class="eachGame">
 <p>
-<img class="img-fluid" src="{{this.gameCover}}" alt="No Game Cover Provided">
+  <a href="/reviews/{{this._id}}">
+  <img class="img-fluid" src="{{this.gameCover}}" alt="No Game Cover Provided"></a>
 </p>
   
-<span>Name:</span><a href="/reviews/{{this._id}}">{{this.game}}</a>
+<span></span><a href="/reviews/{{this._id}}">{{this.game}}</a>
 <br>
 <span>Rating:{{this.rating}}</span> 
 
