@@ -5,15 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-  rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
-  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  
   <link rel="stylesheet" href="/stylesheets/style.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <nav>
+ <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+   <div class="container">
+  <a href="/">
+        <img src="/images/logo-ironhack-blue.png" alt="IronGR Logo">
+      </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {{#if theUser}}
+      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/games/0">Games</a>
+      <a class="nav-item nav-link" href="/profile/{{theUser._id}}">Profile</a>
+      <a class="nav-item nav-link" href="/">About Us</a>
+      <a class="nav-item nav-link" href="/logout">Log Out</a>
+      {{else}}
+      <a class="nav-item nav-link disabled" href="/signup">Sign Up</a>
+      <a class="nav-item nav-link disabled" href="/login">Log In</a>
+      &nbsp; &nbsp; &nbsp;
+      <a class="nav-item nav-link disabled" href="/">About Us</a>
+      {{/if}}
+    </div>
+   </div>
+  </div>
+</nav>
+
+  {{!-- <nav>
     <div class="nav-logo">
       <a href="/">
         <img src="/images/logo-ironhack-blue.png" alt="IronGR Logo">
@@ -35,7 +64,7 @@
       <a href="/">About Us</a>
     {{/if}}
     </div>
-  </nav>
+  </nav> --}}
   <div class= "mainPage">
 
   {{{body}}}

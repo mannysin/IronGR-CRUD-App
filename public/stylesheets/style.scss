@@ -4,18 +4,18 @@ body {
   font: 1em  "Helvetica", Arial, sans-serif;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100vw;
-  height: 3.5vh;
-  padding: 1vw;
-  background-color: lightblue;
-  border-bottom: 5px solid rgb(53, 169, 247);
-}
+// nav {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   position: fixed;
+//   width: 100vw;
+//   height: 3.5vh;
+//   padding: 1vw;
+//   background-color: lightblue;
+//   border-bottom: 5px solid rgb(53, 169, 247);
+// }
 
 nav img {
   width: 2.3vw;
@@ -38,6 +38,24 @@ nav a {
   color: lightblue;
 }
 
+.mainBody{
+  background-color: aqua;
+
+}
+
+.mainTop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.caroCaption {
+  border: 1vh 1vw solid black;
+  border-radius: 5px;
+  background-color: white;
+  color: lightblue;
+}
+
 .eachGame {
   border: 1px solid black;
   border-radius: 5px;
@@ -51,3 +69,7 @@ nav a {
   margin-bottom: 1.5vh;
   width: 40vw;
 }
+
+// .headerImg img {
+//   size: 85vw,
+// }
