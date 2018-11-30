@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #95a4af;">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light navBorder" style="background-color: #cee9fc;">
   <a class="navbar-brand" href="/">
     <img src="/images/logo-ironhack-blue.png" width="30" height="35" alt="IronGR Logo">
   </a>
@@ -47,9 +47,9 @@
   {{{body}}}
 
     {{#if error}}
-    <div class="alert alert-dark errorAlert" role="alert">
-      {{error}}
-    </div>
+      <div>
+      <span class="badge badge-info">{{error}}</span>
+      </div>
     {{/if}}
 
 </div>

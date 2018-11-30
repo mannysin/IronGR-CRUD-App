@@ -4,15 +4,21 @@ body {
   font: 1em  "Helvetica", Arial, sans-serif;
 }
 
+.navBorder{
+  border-bottom: 3px solid darkblue;
+}
+
 .mainPage {
-  padding: 3.5vw;
+  padding: 6.4vh 3.5vw 1vh;
+  background-color: #d5d6d6;
 }
 
 .mainBody{
-  background-color: lightgray;
+  background-color: white;
   color: darkblue;
   font-family: Tahoma, Geneva, sans-serif;
   border: 3px solid darkblue;
+  border-radius: 5px;
 }
 
 .index{
@@ -42,8 +48,24 @@ body {
 .caroCaption {
   border: 1vh 1vw solid black;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: #cee9fc;
   color: white;
+}
+
+
+.bottomReview {
+  display: flex;
+  flex-flow: row;
+  height: 20vh;
+}
+
+.bottomReviewLinks {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  border-left: 1px solid darkblue;
 }
 
 .eachGame {
