@@ -9,7 +9,7 @@ body {
 }
 
 .mainPage {
-  padding: 6.4vh 3.5vw 1vh 3.5vw;
+  padding: 6.6vh 3.5vw 1vh 3.5vw;
   background-color: #d5d6d6;
   height: auto;
 }
@@ -59,8 +59,16 @@ body {
   font-family: Tahoma, Geneva, sans-serif;
   border: 3px solid darkblue;
   border-radius: 5px;
-  padding-left: 2vw;
+  padding-left: 10vw;
   padding-bottom: 2vh;
+}
+
+.spacer {
+  height: 55vh;
+}
+
+.formSpacer {
+  margin-bottom: 3vh;
 }
 
 .bottomReview {
@@ -78,11 +86,26 @@ body {
   border-left: 1px solid darkblue;
 }
 
+.eachGameCont{
+  display: flex;
+  flex-flow: wrap;
+
+}
+
 .eachGame {
   border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 1.5vh;
-  width: 80vw;
+  width: 20vw;
+  padding: 1vh 1vw;
+}
+
+.eachGamefromapi {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 1.5vh;
+  width: 50vw;
+  padding: 1vh 1vw;
 }
 
 .offSetBtns {
@@ -103,6 +126,10 @@ body {
   width: 15vw;
 }
 
+
+.myFooter {
+  border-top: 4px solid lightblue;
+}
 
 .secret {
   color: lightblue;

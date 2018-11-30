@@ -37,19 +37,21 @@ router.get('/games/:offset', (req, res, next) => {
 })
 
 
-router.get('/games/details/:ids', (req, res, next)=>{
-  console.log("--------- ", req.params.ids);
-  axios.get(`https://api-2445582011268.apicast.io/games/${req.params.ids}`)
-  .then((response)=>{
-    client.games({}) 
-    .then(()=> {
-      res.render('games/gameDetails', {oneGame: response.body})
-    })  
-  })
-  .catch((err)=>{
-    next(err)
-  })
-})
+
+
+// router.get('/games/details/:ids', (req, res, next)=>{
+//   console.log("--------- ", req.params.ids);
+//   axios.get(`https://api-2445582011268.apicast.io/games/${req.params.ids}`)
+//   .then((response)=>{
+//     client.games({}) 
+//     .then(()=> {
+//       res.render('games/gameDetails', {oneGame: response.body})
+//     })  
+//   })
+//   .catch((err)=>{
+//     next(err)
+//   })
+// })
 
 
 

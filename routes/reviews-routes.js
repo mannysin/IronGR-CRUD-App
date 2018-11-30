@@ -44,6 +44,36 @@ router.post('/review/create', (req, res, next)=>{
       })
 });
 
+router.get('/reviews/new2', (req, res, next) => {
+    Review.find()
+      .then(()=>{
+        res.render('reviews/newreviewfromapi', {message: req.flash("error")})
+    })
+    .catch((err)=>{
+        next(err);
+    })
+  });
+  
+  router.post('/review/new2', (req, res, next)=>{
+      if(!req.user) {
+          req.flash("error", "You must be logged in to post! Not a member? Sign up!");
+          res.redirect("/login");
+      }
+      const newReview = req.body;
+      newReview.author = req.user._id;
+        Review.create(newReview)
+        .then((review)=>{
+            User.findByIdAndUpdate(req.user._id, {$push: {reviews: review._id}})
+            .then(updatedUser => {
+                console.log("the updated user info with review added to user reviews --------- ", updatedUser);
+                res.redirect('/reviews');
+            })
+        })
+        .catch((err)=>{
+            next(err)
+        })
+  });
+
 router.get('/reviews/:ID', (req, res, next)=>{
     let canModify = false;
 

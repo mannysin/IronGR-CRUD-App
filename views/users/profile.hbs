@@ -1,3 +1,4 @@
+<div class="mainReview">
 <h1>Welcome, {{theUser.username}}!</h1>
 
 <p>Have a look at your info below:</p>
@@ -18,13 +19,9 @@
   <div>
     Your reviews:
     {{#each theUser.reviews}}
-    <ul>
-      <li>
-      <h4>
+    <div class="eachGame">
         <a href="/reviews/{{this._id}}">{{this.game}}: {{this.rating}}</a>
-      </h4>
-      </li>
-    </ul>
+    </div>
     {{/each}}
 
   </div>
@@ -43,10 +40,10 @@
     Feel bad about a review? Click on them to delete it!
   </div>
 
-  <div>
+  {{!-- <div>
     Your games:
     
-  </div>
+  </div> --}}
 
 
   
@@ -56,5 +53,6 @@
 
   </div>
 
+</div>
 </div>
 

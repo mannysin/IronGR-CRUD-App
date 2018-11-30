@@ -1,6 +1,7 @@
 <div class="mainReview">
 <h1>Our curated user reviews can be found below:</h1>
 
+<div class="eachGameCont">
 {{#each reviews}}
 <div class="eachGame">
 <p>
@@ -8,13 +9,15 @@
   <img class="img-fluid" src="{{this.gameCover}}" alt="No Game Cover Provided"></a>
 </p>
   
-<span></span><a href="/reviews/{{this._id}}">{{this.game}}</a>
+<span>Name: </span><a href="/reviews/{{this._id}}">{{this.game}}</a>
 <br>
 <span>Rating:{{this.rating}}</span> 
 
 </div>
 
 {{/each}}
+</div>
+
 <br>
 <br>
 {{#if theUser}}

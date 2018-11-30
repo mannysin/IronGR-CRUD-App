@@ -1,3 +1,4 @@
+<div class="mainReview">
 <h1>Browse all of the games below:</h1>
 
 
@@ -23,10 +24,15 @@
 </div>
 
 {{#each games}}
-<div class="eachGame">
-  <span>Game: </span><a href="/games/details/{{this.id}}">{{this.name}}</a>
+<div class="eachGamefromapi">
+  <span>Game: </span><a href="/reviews/new2">{{this.name}}</a>
   <p></p>
-  <span>Summary: {{this.summary}}</span>
+  {{#if this.summary}}
+    <span>Summary: {{this.summary}}</span>
+  {{else}}
+    <span>Summary: No Summary as of yet...</span>
+  {{/if}}
+
 </div>
 {{/each}}
 
@@ -45,4 +51,6 @@
 
 </a>
 {{/if}}
+</div>
+
 </div>
