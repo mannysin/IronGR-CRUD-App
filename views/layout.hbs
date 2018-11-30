@@ -15,72 +15,79 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
- <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-   <div class="container">
-  <a href="/">
-        <img src="/images/logo-ironhack-blue.png" alt="IronGR Logo">
-      </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      {{#if theUser}}
-      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/games/0">Games</a>
-      <a class="nav-item nav-link" href="/reviews">Reviews</a>
-      <a class="nav-item nav-link" href="/profile/{{theUser._id}}">Profile</a>
-      <a class="nav-item nav-link" href="/">About Us</a>
-      <a class="nav-item nav-link" href="/logout">Log Out</a>
-      {{else}}
-      <a class="nav-item nav-link disabled" href="/signup">Sign Up</a>
-      <a class="nav-item nav-link disabled" href="/login">Log In</a>
-      &nbsp; &nbsp; &nbsp;
-      <a class="nav-item nav-link disabled" href="/">About Us</a>
-      {{/if}}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #95a4af;">
+  <a class="navbar-brand" href="/">
+    <img src="/images/logo-ironhack-blue.png" width="30" height="35" alt="IronGR Logo">
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        {{#if theUser}}
+        <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/games/0">Games</a>
+        <a class="nav-item nav-link" href="/reviews">Reviews</a>
+        <a class="nav-item nav-link" href="/profile/{{theUser._id}}">Profile</a>
+        <a class="nav-item nav-link" href="/">About Us</a>
+        <a class="nav-item nav-link" href="/logout">Log Out</a>
+        {{else}}
+        <a class="nav-item nav-link disabled" href="/signup">Sign Up</a>
+        <a class="nav-item nav-link disabled" href="/login">Log In</a>
+        &nbsp; &nbsp; &nbsp;
+        <a class="nav-item nav-link disabled" href="/">About Us</a>
+        {{/if}}
+      </div>
     </div>
-   </div>
-  </div>
 </nav>
 
-  {{!-- <nav>
-    <div class="nav-logo">
-      <a href="/">
-        <img src="/images/logo-ironhack-blue.png" alt="IronGR Logo">
-      </a>
-    </div>
-    <div class = "nav-links">
-    {{#if theUser}}
-      <a class = "secret" href="/secretpage">.</a>
-      <a href="/">Home</a>
-      <a href="/games/0">Games</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/profile/{{theUser._id}}">My Account</a>
-      <a href="/">About Us</a>
-      <a href="/logout">Log Out</a>
-    {{else}}
-      <a href="/signup">Signup</a> <span>or</span>  
-      <a href="/login">Log In</a>
-      &nbsp; &nbsp; &nbsp;
-      <a href="/">About Us</a>
-    {{/if}}
-    </div>
-  </nav> --}}
-  <div class= "mainPage">
+<div class= "mainPage">
 
   {{{body}}}
 
-{{#if error}}
-<div>
-  {{error}}
+    {{#if error}}
+    <div class="alert alert-dark errorAlert" role="alert">
+      {{error}}
+    </div>
+    {{/if}}
+
 </div>
-{{/if}}
 
+<footer class="page-footer font-small blue pt-4">
+
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+        <h5 class="text-uppercase">Contact Us</h5>
+        <p>Email: </p>
+        <p>Github: </p>
+      </div>
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <div class="col-md-3 mb-md-0 mb-3">
+          <h5 class="text-uppercase">Iron GameReview:</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/games/0">Browse Games</a>
+            </li>
+            <li>
+              <a href="/reviews">Browse Reviews</a>
+            </li>
+            <li>
+              <a href="/">About us</a>
+            </li>
+          </ul>
+        </div>
+    </div>
   </div>
-
-  <footer>
-
-  </footer>
+  <div class="footer-copyright text-center py-3">Made with Love, Patience, and an Open Mind by:
+    <a href="/">Emmanuel Sinclair</a>
+  </div>
+</footer>
 
   <script src="/javascripts/script.js"></script>
 </body>

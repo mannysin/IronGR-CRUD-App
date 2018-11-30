@@ -36,7 +36,7 @@ router.post('/signup', (req, res, next)=> {
         })
         .then((theUser)=>{
           req.login(theUser, (err) => {
-            req.flash('error', 'something went wrong with auto login, please log in manually')
+            req.flash('error', 'To verify your account, please login.')
             res.redirect('/login')
             return;
           })
@@ -57,7 +57,7 @@ router.get('/login', (req, res, next)=> {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: `/profile/:id`,
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
