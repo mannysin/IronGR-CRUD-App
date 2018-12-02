@@ -42,7 +42,8 @@ body {
 .youtubeVideo {
   border: 5px solid gray;
   background-color: #d8d8d8;
-  display: flex;
+  display: inherit;
+  flex: 1;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
