@@ -32,7 +32,7 @@ router.post('/signup', (req, res, next)=> {
         password: hashPass,
         firstName: "I haven't edited",
         lastName: "my profile yet",
-        avatar: "http://worldartsme.com/images/blue-lightning-bolt-clipart-1.jpg",
+        avatar: "https://www.edgehill.ac.uk/health/files/2017/12/blank-profile.png",
         bio: "I am technically a sheep to whoever made this because I haven't edited my information.",
         })
         .then((theUser)=>{

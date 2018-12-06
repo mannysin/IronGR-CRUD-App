@@ -131,6 +131,10 @@ body {
   justify-content: center;
   width: 15vw; }
 
+.profile img {
+  width: 20%;
+  border-radius: 50%; }
+
 .myFooter {
   border-top: 4px solid lightblue;
   display: flex;
