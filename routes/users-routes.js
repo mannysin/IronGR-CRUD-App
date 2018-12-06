@@ -5,6 +5,7 @@ const passport   = require("passport");
 const User       = require('../models/User');
 const Review     = require('../models/Review');
 const Comment    = require('../models/Comment');
+const uploadCloud = require('../config/cloudinary.js');
 
 router.get('/signup', (req, res, next) => {
   res.render('users/signup', {error: req.flash("error")});
@@ -83,10 +84,16 @@ router.get('/profile/:id/edit-profile', (req, res, next)=>{
   })
 })
 
-router.post('/:id/update', (req, res, next)=>{
-  User.findByIdAndUpdate(req.params.id, req.body)
-  .then(()=>{
-      res.redirect('/profile/'+req.params.id);
+router.post('/:id/update', uploadCloud.single('avatar'), (req, res, next)=>{
+  const changes = req.body;
+
+  if(req.file){
+    changes.avatar = req.file.url;
+  }
+  
+  User.findByIdAndUpdate(req.params.id, changes)
+  .then(()=> {
+    res.redirect('/profile/'+req.params.id);
   })
   .catch((err)=>{
       next(err)
